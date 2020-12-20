@@ -1,6 +1,7 @@
 from django.db import models
-
+import datetime
 # Team
+
 
 class Team_Member(models.Model):
     team_members_firstname=models.CharField(max_length=64)
@@ -15,9 +16,10 @@ class Team(models.Model):
 # Create your models here.
 class Project(models.Model):
     Project_name=models.CharField(max_length=64)
-    task=models.IntegerField()
+    task_count=models.IntegerField()
     team=models.IntegerField()
     complete_percentage=models.IntegerField()
+    createdate=datetime.datetime.now()
     def __str__():
         return f'{Project_name}'
 
@@ -40,4 +42,3 @@ class Release(models.Model):
 class Report(models.Model):
     projectId=models.ForeignKey(Project,on_delete=models.CASCADE,name="proid")
     report=models.CharField(max_length=65,name="Error Description")
-
