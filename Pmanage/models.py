@@ -1,6 +1,6 @@
 from django.db import models
 import datetime
-# Team
+
 
 
 class Team_Member(models.Model):
@@ -20,6 +20,7 @@ class Project(models.Model):
     team=models.IntegerField()
     complete_percentage=models.IntegerField()
     createdate=datetime.datetime.now()
+    max_day=models.IntegerField()
     def __str__():
         return f'{Project_name}'
 
