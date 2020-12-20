@@ -7,12 +7,10 @@ class Team_Member(models.Model):
     team_members_lastname=models.CharField(max_length=64)
     team_leader=models.IntegerField()
 
-    
+
 class Team(models.Model):
     team=models.IntegerField()
     tem_member=models.ForeignKey(Team_Member,on_delete=models.CASCADE,name="Temid")
-
-
 
 # Create your models here.
 class Project(models.Model):
