@@ -9,9 +9,9 @@ def index(request):
     return HttpResponse(f'<h1>Hello{name}</h1>')
     
 def plan(request):
-    return HttpResponse("<h1>Hello</h1>")
+    return HttpResponse(f'<h1>Hello{name}</h1>')
 
-def tract(request):
+def track(request):
     return HttpResponse("<h1>Hello</h1>")
 
 def release(request):
