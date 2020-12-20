@@ -1,7 +1,10 @@
 from django.db import models
 import datetime
+from django.contrib.auth.models import AbstractUser
 
 
+class User(AbstractUser):
+    pass
 
 class Team_Member(models.Model):
     team_members_firstname=models.CharField(max_length=64)

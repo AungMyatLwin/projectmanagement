@@ -2,14 +2,10 @@ from django.shortcuts import render,HttpResponse
 from .models import Project
 # Create your views here.
 def index(request):
-    b=Project.objects.all()
-    print("hello")
-    for na in b:
-        name=na.Project_name
-    return HttpResponse(f'<h1>Hello{name}</h1>')
+    return HttpResponse('<h1>Hello</h1>')
     
 def plan(request):
-    return HttpResponse(f'<h1>Hello{name}</h1>')
+    return HttpResponse('<h1>Hello</h1>')
 
 def track(request):
     return HttpResponse("<h1>Hello</h1>")
