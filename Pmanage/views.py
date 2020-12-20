@@ -2,16 +2,17 @@ from django.shortcuts import render,HttpResponse
 from .models import Project
 # Create your views here.
 def index(request):
-    return HttpResponse('<h1>Hello</h1>')
+    return render(request,"Pmanage/Plan.html")
     
 def plan(request):
-    return HttpResponse('<h1>Hello</h1>')
+    return render(request,"Pmanage/Plan.html")
 
 def track(request):
-    return HttpResponse("<h1>Hello</h1>")
+    return render(request,"Pmanage/Track.html")
+
 
 def release(request):
-    return HttpResponse("<h1>Hello</h1>")
+    return render(request,"Pmanage/Release.html")
 
 def report(request):
-    return HttpResponse("<h1>Hello</h1>")
+    return render(request,"Pmanage/Report.html")
