@@ -7,6 +7,7 @@ class User(AbstractUser):
     pass
 
 class Team_Member(models.Model):
+    userid=models.ForeignKey(User,on_delete=models.CASCADE,name="userid")
     team_members_firstname=models.CharField(max_length=64)
     team_members_lastname=models.CharField(max_length=64)
     team_leader=models.IntegerField()
@@ -19,13 +20,10 @@ class Team(models.Model):
 # Create your models here.
 class Project(models.Model):
     Project_name=models.CharField(max_length=64)
-    task_count=models.IntegerField()
     team=models.IntegerField()
     complete_percentage=models.IntegerField()
     createdate=datetime.datetime.now()
     max_day=models.IntegerField()
-    def __str__():
-        return f'{Project_name}'
 
 # Tasks with project id
 class Tasks(models.Model):
