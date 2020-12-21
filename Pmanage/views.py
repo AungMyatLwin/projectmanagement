@@ -2,8 +2,7 @@ from django.shortcuts import render,HttpResponse
 from .models import Project
 # Create your views here.
 def index(request):
-    print("gay")
-    return render(request,"Pmanage/Plan.html")
+    return render(request,"Pmanage/index.html")
     
 def plan(request):
     return render(request,"Pmanage/Plan.html")
