@@ -1,6 +1,12 @@
 from django.shortcuts import render,HttpResponse
 from .models import Project
 # Create your views here.
+def login(request):
+    return render(request,"Pmanage/login.html")
+
+def logout(request):
+    return HttpResponse("jwer")
+
 def index(request):
     return render(request,"Pmanage/index.html")
     
