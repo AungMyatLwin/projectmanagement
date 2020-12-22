@@ -10,5 +10,30 @@ Plans
              <h1 style="text-align: center;" id="h1center">Plans</h1>
         </div>
       </div>
+    <div class="container">
+    <div class="row">
+        <div class="col" id="heading" style="border: solid 1px;">
+             <h1 class="h1center">Create Project</h1>
+        </div>
+      </div>
+     <div class="row">
+        <div class="col h1center" id="content2" style="border: solid 1px;">
+             <form action="{% url 'Plan' %}" method="POST">
+                 {% csrf_token %}
+                 <label>Project Title</label>
+                 <input type="text" name="Pname">
+                 <label>Team </label>
+                 <input type="text" name="team">
+                 <label> Maximum Days</label>
+                 <input type="number" name="maxday">
+                 <input type="submit">
+             </form>
+        </div>
+      </div>
+     <div class="row">
+        <div class="col h1center" id="content1" style="border: solid 1px;">
+        </div>
+      </div>
+  </div>
   </div>
 {% endblock body %}
