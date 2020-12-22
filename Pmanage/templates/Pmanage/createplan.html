@@ -1,12 +1,25 @@
 {% extends 'Pmanage/layout.html' %}
 {% block body %}
+<script>
+    document.addEventListener("load",()=>{document.querySelector("#submit").innerHTML = "Save";})
+</script>
 {% for pro in projects %}
-<p hidden="True"> {{pro.id}}</p>
-<p>{{pro.Project_name}}</p>
-<form action="{% url 'Cplan' pro.id %}">
+<ul>
+    <li><a href="{% url 'Cplan' pro.id %}">{{pro.Project_name}}</a></li>
+</ul>
+
+{% endfor %}
+
+{% for pro in Project %}
+<form action="{% url 'Cplan' pro.id %}" method="POST">
+    {% csrf_token %}
+    <select>
+    <option name="projectname" value="pro.id">{{pro.Project_name}}</option>
+</select>
 <label>Task Name</label>
 <input type="text" name="taskname">
-<input type="submit">
+<input type="submit" id="submit">
 </form>
 {% endfor %}
+
 {% endblock %}

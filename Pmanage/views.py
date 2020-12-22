@@ -34,23 +34,41 @@ def logout(request):
     Lout(request)
     return render(request, "Pmanage/logout.html")
 
+@login_required
+def projects(request):
+    project = Project.objects.all()
+    return render(request, "Pmanage/index.html", {
+        "projects": project
+    })
 
+@login_required
+def intproject(request,id):
 
+    return HttpResponse('h1')
+#create project
 @login_required
 def createproject(request):
     return render(request, "Pmanage/Plan.html")
 
 @login_required
+#project create
 def plan(request):
     project_title=request.POST["Pname"]
     team=request.POST["team"]
     maxday=request.POST["maxday"]
+    p=Project.objects.create(Project_name=project_title,complete_percentage=1,team=team,max_day=maxday)
+    p.save()
+    #project created then redirect to
     print(project_title,"",team,"",maxday)
     projects=Project.objects.all()
-    return render(request, "Pmanage/createplan.html",{
+    return render(request, "Pmanage/index.html",{
         "projects":projects
     })
-
+@login_required
+#Task create
+def tasks(request):
+    p=Project.objects.all()
+    return render(request, "Pmanage/createplan.html", {"Project":p})
 @login_required
 def create_plan(request,id):
     return render(request,"Pmanage/createplan.html")
