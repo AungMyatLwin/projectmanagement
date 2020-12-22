@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,HttpResponseRedirect,reverse
 from django.contrib.auth import authenticate, login as lagin, logout as Lout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -52,9 +52,8 @@ def plan(request):
     })
 
 @login_required
-def create_plan(request):
-    return render(request,"Pmanage/Plan.html")
-
+def create_plan(request,id):
+    return render(request,"Pmanage/createplan.html")
 
 def track(request):
     return render(request, "Pmanage/Track.html")

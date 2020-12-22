@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'Pmanage/layout.html' %}
+{% block body %}
+{% for pro in projects %}
+<p hidden="True"> {{pro.id}}</p>
+<p>{{pro.Project_name}}</p>
+<form action="{% url 'Cplan' pro.id %}">
+<label>Task Name</label>
+<input type="text" name="taskname">
+<input type="submit">
+</form>
+{% endfor %}
+{% endblock %}
