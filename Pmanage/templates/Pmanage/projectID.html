@@ -9,5 +9,24 @@
     </ul>
     {% endfor %}
 </ul>
+<form method="POST" action="{% url 'Cplan' p.id %}">
+    {% csrf_token %}
+Add New Task
+    <input type="text" name="task1">
+    <input type="submit">
+</form>
 {% endfor %}
+<progress  id="progressbar"></progress>
+
+<script>
+    var progressbar = document.getElementById('progressbar');
+    let aa=progressbar.value;
+    let i=0;
+    for(i=0;i>100;i++)
+    {
+    progressbar=i+aa;
+    console.log(progressbar);
+    document.querySelector('progressbar').innerText=progressbar;
+    }
+</script>
 {% endblock %}

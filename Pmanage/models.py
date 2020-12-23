@@ -29,6 +29,7 @@ class Project(models.Model):
 class Tasks(models.Model):
     projectid=models.ForeignKey(Project,on_delete=models.CASCADE,name="Pid")
     taskname=models.CharField(max_length=64)
+    taskpercentage=models.IntegerField()
 
 # Tracking status of each task
 class Tracking(models.Model):
