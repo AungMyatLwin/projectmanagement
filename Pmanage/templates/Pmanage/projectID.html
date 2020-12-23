@@ -5,7 +5,8 @@
     <li><a href="{% url 'PID' p.id %}">{{p.Project_name}}</a></li>
     {% for t in Tasks %}
     <ul>
-        <li>{{t.taskname}}</li>
+        <li><a href="{% url 'inditask' t.id %}"  >{{t.taskname}}</a></li>
+        <progress value="{{t.taskpercentage}}" max="100"  id="progressbar"></progress>
     </ul>
     {% endfor %}
 </ul>
@@ -16,7 +17,7 @@ Add New Task
     <input type="submit">
 </form>
 {% endfor %}
-<progress  id="progressbar"></progress>
+
 
 <script>
     var progressbar = document.getElementById('progressbar');

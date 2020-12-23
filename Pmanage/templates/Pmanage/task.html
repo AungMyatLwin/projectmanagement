@@ -1,8 +1,8 @@
 {% extends 'Pmanage/layout.html' %}
 {% block body %}
-{% for projects in proj %}
+{% for p in projects %}
 <ul>
-    <li>{{projects.Project_name}}</li>
+    <li>{{p.taskname}}</li>
 </ul>
 {% endfor %}
 {% endblock %}

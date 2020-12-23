@@ -76,10 +76,13 @@ def plan(request):
     })
 
 
-# @login_required
-# #Task create
-# def tasks(request):
-#     return render(request, "Pmanage/createplan.html")
+@login_required
+#Task create
+def task(request,id):
+    print(id)
+    task_id=Tasks.objects.filter(id=id)
+    print(task_id)
+    return render(request, "Pmanage/task.html",{"projects":task_id})
 
 # Task create
 @login_required
@@ -92,7 +95,8 @@ def create_plan(request, id):
 
 
 def track(request):
-    return render(request, "Pmanage/Track.html")
+    proj=Project.objects.all()
+    return render(request, "Pmanage/Track.html",{"proj" : proj})
 
 
 def release(request):
