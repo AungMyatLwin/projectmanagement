@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse,HttpResponseRedirect,reverse
 from django.contrib.auth import authenticate, login as lagin, logout as Lout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Project,User
+from .models import Project,User,Tasks
 
 
 # Create your views here.
@@ -42,9 +42,14 @@ def projects(request):
     })
 
 @login_required
+#PID project ID
 def intproject(request,id):
+    showproject=Project.objects.filter(id=id)
+    showtasks=Tasks.objects.filter(Pid=id)
+    return render(request, "Pmanage/projectID.html",{
+        "Project":showproject,"Tasks":showtasks
+    })
 
-    return HttpResponse('h1')
 #create project
 @login_required
 def createproject(request):

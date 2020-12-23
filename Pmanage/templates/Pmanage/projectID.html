@@ -1,0 +1,13 @@
+{% extends 'Pmanage/layout.html' %}
+{% block body %}
+{% for p in Project %}
+<ul>
+    <li><a href="{% url 'PID' p.id %}">{{p.Project_name}}</a></li>
+    {% for t in Tasks %}
+    <ul>
+        <li>{{t.taskname}}</li>
+    </ul>
+    {% endfor %}
+</ul>
+{% endfor %}
+{% endblock %}
