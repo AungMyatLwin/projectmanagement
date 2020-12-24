@@ -2,7 +2,15 @@
 {% block body %}
 {% for p in projects %}
 <ul>
+    <form>
+    <li hidden="true" id="taskid">{{p.id}}</li>
     <li>{{p.taskname}}</li>
+    <li>{{p.taskpercentage}}</li>
+    <label>Edit Task</label>
+    <input type="number" id="percent" name="percentage"/>
+    <button id="but" value="{{p.taskpercentage}}">Save</button>
+    </form>
 </ul>
 {% endfor %}
+
 {% endblock %}
