@@ -99,18 +99,14 @@ def task_percentage(request,id):
     taskid=id
     print(taskid)
     taskperupdate=Tasks.objects.filter(id=id).update(taskpercentage=taskper)
+    # test=sum(lst) / len(lst)
+    # Average percentage update.
+
     return HttpResponseRedirect(reverse(task,args=[id]))
 
 def track(request):
     proj=Project.objects.all()
-    for pro in proj:
-        projid=pro.id
-        filt=Tasks.objects.filter(Pid_id=pro.id)
-        for fil in filt:
-            print(fil.id)
-
     return render(request, "Pmanage/Track.html",{"proj": proj})
-
 
 def release(request):
     return render(request, "Pmanage/Release.html")
