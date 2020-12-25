@@ -103,7 +103,13 @@ def task_percentage(request,id):
 
 def track(request):
     proj=Project.objects.all()
-    return render(request, "Pmanage/Track.html",{"proj" : proj})
+    for pro in proj:
+        projid=pro.id
+        filt=Tasks.objects.filter(Pid_id=pro.id)
+        for fil in filt:
+            print(fil.id)
+
+    return render(request, "Pmanage/Track.html",{"proj": proj})
 
 
 def release(request):
