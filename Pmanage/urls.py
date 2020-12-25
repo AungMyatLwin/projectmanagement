@@ -11,6 +11,7 @@ urlpatterns = [
     path('projects',views.projects,name='All_Project'),
     path('<int:id>/Project',views.intproject,name="PID"),
     path('<int:id>/task',views.task,name="inditask"),
+    path('TaskPercentage',views.task_percentage,name="Ptask"),
     path('plan',views.plan,name="Plan"),
     path('track',views.track,name="Track"),
     path('release',views.release,name="Release"),

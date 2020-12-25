@@ -93,6 +93,10 @@ def create_plan(request, id):
     tadd.save()
     return HttpResponseRedirect(reverse(intproject, args=[id]))
 
+def task_percentage(request):
+    taskper=request.GET.get('percentage')
+    print(taskper)
+    return HttpResponse("hello")
 
 def track(request):
     proj=Project.objects.all()

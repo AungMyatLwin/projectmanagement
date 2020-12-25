@@ -2,7 +2,7 @@
 {% block body %}
 {% for p in projects %}
 <ul>
-    <form>
+    <form action="{% url 'Ptask' %}">
     <li hidden="true" id="taskid">{{p.id}}</li>
     <li>{{p.taskname}}</li>
     <li>{{p.taskpercentage}}</li>
