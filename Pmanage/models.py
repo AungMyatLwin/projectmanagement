@@ -24,6 +24,7 @@ class Project(models.Model):
     complete_percentage=models.IntegerField()
     createdate=datetime.datetime.now()
     max_day=models.IntegerField()
+    status=models.CharField(max_length=64)
 
 # Tasks with project id
 class Tasks(models.Model):

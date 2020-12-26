@@ -140,9 +140,7 @@ def release(request):
     id=request.body
     project_id=json.loads(id)
     project=Project.objects.filter(id=project_id)
-    for projects in project:
-        print(f'{projects.id} is {projects.Project_name}')
-        pro
+    
     return  JsonResponse({"proj":"proj"})
 
 
