@@ -45,4 +45,4 @@ class Release(models.Model):
 
 class Report(models.Model):
     projectId=models.ForeignKey(Project,on_delete=models.CASCADE,name="proid")
-    report=models.CharField(max_length=65,name="Error Description")
+    report=models.TextField(name="Error Description")

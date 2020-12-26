@@ -139,10 +139,14 @@ def track(request):
 def release(request):
     id=request.body
     project_id=json.loads(id)
-    project=Project.objects.filter(id=project_id)
-    
-    return  JsonResponse({"proj":"proj"})
+    projec=Project.objects.filter(id=project_id).update(status="release")
+    return  JsonResponse({"proj":projec})
+
+def released(request):
+    proj = Project.objects.all()
+    return render(request, "Pmanage/Release.html",{"proj": proj})
 
 
 def report(request):
-    return render(request, "Pmanage/Report.html")
+    projec=Project.objects.filter(status="release")
+    return render(request, "Pmanage/Report.html",{"projs":projec})
