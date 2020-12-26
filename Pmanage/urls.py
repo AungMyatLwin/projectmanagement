@@ -15,5 +15,6 @@ urlpatterns = [
     path('plan',views.plan,name="Plan"),
     path('track',views.track,name="Track"),
     path('release',views.release,name="Release"),
+    path("proj",views.Jsontest,name="proj"),
     path('report',views.report,name="Report")
 ]

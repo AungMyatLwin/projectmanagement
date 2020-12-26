@@ -2,12 +2,22 @@
 {% block body %}
 {% for projects in proj %}
 <ul>
-    <li hidden="true">{{projects.id}}</li>
+    <li hidden="true" id="project_id">{{projects.id}}</li>
     <li>{{projects.Project_name}}</li>
     <li>{{projects.complete_percentage}}</li>
     {% if projects.complete_percentage == 100 %}
-     <button name="release">Release</button>
+
+     <button onclick="send('{{projects.id}}')" name="release">Release</button>
     {% endif %}
 </ul>
 {% endfor %}
+<script>
+    function send(id){
+    fetch("/proj")
+    .then(response=>response.json())
+    .then(data=>{
+    console.log(JSON.stringify(data))
+    })
+    };
+</script>
 {% endblock %}

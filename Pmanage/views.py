@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login as lagin, logout as Lout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Project, User, Tasks
-
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -133,6 +133,9 @@ def update(pid,avg):
 def track(request):
     proj=Project.objects.all()
     return render(request, "Pmanage/Track.html",{"proj": proj})
+
+def Jsontest(request):
+    return  JsonResponse({"proj":"proj"})
 
 def release(request):
     return render(request, "Pmanage/Release.html")
