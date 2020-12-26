@@ -3,8 +3,9 @@ from django.contrib.auth import authenticate, login as lagin, logout as Lout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Project, User, Tasks
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-
+import json
 # Create your views here.
 
 def index(request):
@@ -133,12 +134,16 @@ def update(pid,avg):
 def track(request):
     proj=Project.objects.all()
     return render(request, "Pmanage/Track.html",{"proj": proj})
-
-def Jsontest(request):
-    return  JsonResponse({"proj":"proj"})
-
+    
+@csrf_exempt
 def release(request):
-    return render(request, "Pmanage/Release.html")
+    id=request.body
+    project_id=json.loads(id)
+    project=Project.objects.filter(id=project_id)
+    for projects in project:
+        print(f'{projects.id} is {projects.Project_name}')
+        pro
+    return  JsonResponse({"proj":"proj"})
 
 
 def report(request):
