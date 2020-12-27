@@ -143,16 +143,10 @@ def release(request):
     return  JsonResponse({"proj":projec})
 
 def released(request):
-    proj = Project.objects.all()
+    proj = Project.objects.filter(status="release")
     return render(request, "Pmanage/Release.html",{"proj": proj})
 
 
 def report(request):
     projec=Project.objects.filter(status="release")
     return render(request, "Pmanage/Report.html",{"projs":projec})
-
-@csrf_exempt
-def report_project(request):
-    req=request.body
-    print(req)
-    return JsonResponse({"test":"test"})

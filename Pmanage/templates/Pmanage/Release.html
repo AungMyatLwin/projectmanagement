@@ -1,0 +1,11 @@
+{% extends 'Pmanage/layout.html' %}
+{% block body %}
+{% for project_release in proj  %}
+<ul>
+    <li>
+       {{project_release.Project_name}} and {{project_release.status}} 
+    </li>
+</ul>
+{% endfor %}
+
+{% endblock %}erreer
