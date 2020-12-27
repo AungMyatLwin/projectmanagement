@@ -1,4 +1,35 @@
 {% extends 'Pmanage/layout.html' %}
 {% block body %}
+{% for project_release in projs %}
+<ul>
+    <li>
+        {{project_release.Project_name}} and {{project_release.status}} 
+    </li>
+    <li>
+        <textarea id="{{project_release.id}}" placeholder="Report"></textarea>
+    </li>
+    <button id="report" onclick="rep('{{project_release.id}}')">
+        Report
+    </button>
+</ul>
+{% endfor %}
+<script> 
+
+function rep(id)
+    {
+    //get the report
+    let test=document.querySelectorAll('');
+    
+   
+    fetch("/Reported",{
+        method:"POST",
+        body:JSON.stringify({"id":id})
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        console.log(JSON.stringify(data))
+    })
+    }
+</script>
 
 {% endblock %}
