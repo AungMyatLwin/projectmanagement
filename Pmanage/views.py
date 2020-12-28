@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect, reverse
 from django.contrib.auth import authenticate, login as lagin, logout as Lout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Project, User, Tasks
+from .models import Project, User, Tasks,Report
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
