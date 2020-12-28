@@ -16,5 +16,6 @@ urlpatterns = [
     path('track',views.track,name="Track"),
     path('release',views.release,name="Release"),
     path("Released",views.released,name="Released"),
-    path('report',views.report,name="Report"),
+    path('reports',views.reported,name='reported')
+    ,path('report',views.report,name="Report"),
 ]

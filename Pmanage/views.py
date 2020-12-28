@@ -150,3 +150,6 @@ def released(request):
 def report(request):
     projec=Project.objects.filter(status="release")
     return render(request, "Pmanage/Report.html",{"projs":projec})
+
+def reported(request):
+    return HttpResponse('hell')
