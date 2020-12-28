@@ -17,18 +17,27 @@
 {% endfor %}
 <script>
   let funz=document.querySelector("#shows");
-funz=document.addEventListener('click',function(){
-  let id=document.querySelector("#id");
-  fetch(`/${id.innerHTML}/reports`,{
+funz=document.addEventListener('click',
+  function ()
+  {
+  let id=document.querySelectorAll("#id").forEach(event=>{
+    function eve(id)
+  {
+    const aa=event.target;
+  fetch(`/${id.innerHTML}/reports`,
+  {
     method:"GET"
   })
   .then(response=>response.json())
-  .then(data=>{
+  .then(data=>
+  {
     for(d of data)
     {
       console.log(d)
     }
   })
-});
+  }})
+}
+);
 </script>
 {% endblock %}
