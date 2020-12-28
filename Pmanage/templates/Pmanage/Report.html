@@ -13,30 +13,35 @@
 </form>
 <button value="{{project_release.id}}" id="shows">Show Reports</button>
 </ul>
-<div id="show"></div>
-{% endfor %}
 
+{% endfor %}
+<div id="show"></div>
 <script>
 let funzr =document.addEventListener('click',
   function ()
   {
   let id=document.querySelectorAll("#id");
   let test=event.target
-  console.log(test.value)
   eve(test.value)
-
+  document.querySelector('#show').innerHTML=' ';
   });
    
   function eve(id)
   {
+    let div=document.querySelector('#show');
   fetch(`/${id}/reports`,
   {
     method:"GET"
   })
   .then(response=>response.json())
   .then(response=>{
-    console.log(response)
+    response.forEach(element => {
+      let p=document.createElement('p');
+      p.append(element);
+      div.appendChild(p)
+    });
   })
+
   }
 </script>
 {% endblock %}
