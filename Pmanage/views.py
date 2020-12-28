@@ -153,6 +153,16 @@ def report(request):
 
 def reported(request,id):
     text=request.POST["Report"]
+    rett=[]
     reports=Report.objects.create(proid_id=id,Reports=text)
     reports.save()
-    return HttpResponse(f'{id} and {text}')
+    ret=report_text(id)
+    print(ret)
+    for r in ret:
+        rett.append(r.Reports)
+    return JsonResponse({"ret":rett})
+
+
+def report_text(id):
+    xx=Report.objects.filter(proid_id=id)
+    return xx
