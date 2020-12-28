@@ -151,5 +151,8 @@ def report(request):
     projec=Project.objects.filter(status="release")
     return render(request, "Pmanage/Report.html",{"projs":projec})
 
-def reported(request):
-    return HttpResponse('hell')
+def reported(request,id):
+    text=request.POST["Report"]
+    reports=report.objects.create(proid_id=id,Report=text)
+    reports.save()
+    return HttpResponse(f'{id} and {text}')

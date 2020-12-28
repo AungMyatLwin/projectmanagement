@@ -16,6 +16,6 @@ urlpatterns = [
     path('track',views.track,name="Track"),
     path('release',views.release,name="Release"),
     path("Released",views.released,name="Released"),
-    path('reports',views.reported,name='reported')
+    path('<int:id>/reports',views.reported,name='reported')
     ,path('report',views.report,name="Report"),
 ]

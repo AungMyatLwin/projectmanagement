@@ -2,9 +2,14 @@
 {% block body %}
 {% for project_release in projs %}
 <ul>
+    <form action="{% url 'reported' project_release.id  %}" method="POST" >
+        {% csrf_token %}
     <li>
-       <a href=""> {{project_release.Project_name}} and {{project_release.status}}</a>
+      {{project_release.Project_name}} and {{project_release.status}}
     </li>
+    <textarea name="Report"></textarea>
+    <button>Report</button>
+</form>
 </ul>
 {% endfor %}
 {% endblock %}
