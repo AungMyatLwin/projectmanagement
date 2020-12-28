@@ -160,12 +160,8 @@ def reported(request,id):
         return HttpResponseRedirect(reverse(report))
     if request.method == "GET":
         rett=[]
-        ret=report_text(id)
-        print(ret)
-        for r in ret:
+        xx=Report.objects.filter(proid_id=id)
+        for r in xx:
             rett.append(r.Reports)
-        return JsonResponse(rett,safe=False)
-
-def report_text(id):
-    xx=Report.objects.filter(proid_id=id)
-    return xx
+    return JsonResponse(rett,safe=False)
+    

@@ -9,35 +9,34 @@
       {{project_release.Project_name}} and {{project_release.status}}
     </li>
     <textarea name="Report"></textarea>
-    <button>Report</button>
+    <button >Report</button>
 </form>
-<button  id="shows">Show Reports</button>
-<div id="show"></div>
+<button value="{{project_release.id}}" id="shows">Show Reports</button>
 </ul>
+<div id="show"></div>
 {% endfor %}
+
 <script>
-  let funz=document.querySelector("#shows");
-funz=document.addEventListener('click',
+let funzr =document.addEventListener('click',
   function ()
   {
-  let id=document.querySelectorAll("#id").forEach(event=>{
-    function eve(id)
+  let id=document.querySelectorAll("#id");
+  let test=event.target
+  console.log(test.value)
+  eve(test.value)
+
+  });
+   
+  function eve(id)
   {
-    const aa=event.target;
-  fetch(`/${id.innerHTML}/reports`,
+  fetch(`/${id}/reports`,
   {
     method:"GET"
   })
   .then(response=>response.json())
-  .then(data=>
-  {
-    for(d of data)
-    {
-      console.log(d)
-    }
+  .then(response=>{
+    console.log(response)
   })
-  }})
-}
-);
+  }
 </script>
 {% endblock %}
