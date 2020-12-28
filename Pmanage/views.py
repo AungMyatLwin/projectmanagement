@@ -153,6 +153,6 @@ def report(request):
 
 def reported(request,id):
     text=request.POST["Report"]
-    reports=report.objects.create(proid_id=id,Report=text)
+    reports=Report.objects.create(proid_id=id,Reports=text)
     reports.save()
     return HttpResponse(f'{id} and {text}')
