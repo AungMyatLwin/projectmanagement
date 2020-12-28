@@ -151,17 +151,20 @@ def report(request):
     projec=Project.objects.filter(status="release")
     return render(request, "Pmanage/Report.html",{"projs":projec})
 
+@csrf_exempt
 def reported(request,id):
-    text=request.POST["Report"]
-    rett=[]
-    reports=Report.objects.create(proid_id=id,Reports=text)
-    reports.save()
-    ret=report_text(id)
-    print(ret)
-    for r in ret:
-        rett.append(r.Reports)
-    return JsonResponse({"ret":rett})
-
+    if request.method == "POST":
+        text=request.POST["Report"]
+        reports=Report.objects.create(proid_id=id,Reports=text)
+        reports.save()
+        return HttpResponseRedirect(reverse(report))
+    if request.method == "GET":
+        rett=[]
+        ret=report_text(id)
+        print(ret)
+        for r in ret:
+            rett.append(r.Reports)
+        return JsonResponse(rett,safe=False)
 
 def report_text(id):
     xx=Report.objects.filter(proid_id=id)

@@ -3,6 +3,7 @@
 {% for project_release in projs %}
 <ul>
     <form action="{% url 'reported' project_release.id  %}" method="POST" >
+      <li hidden="True" id="id">{{project_release.id}}</li>
         {% csrf_token %}
     <li>
       {{project_release.Project_name}} and {{project_release.status}}
@@ -10,7 +11,24 @@
     <textarea name="Report"></textarea>
     <button>Report</button>
 </form>
-<li></li>
+<button  id="shows">Show Reports</button>
+<div id="show"></div>
 </ul>
 {% endfor %}
+<script>
+  let funz=document.querySelector("#shows");
+funz=document.addEventListener('click',function(){
+  let id=document.querySelector("#id");
+  fetch(`/${id.innerHTML}/reports`,{
+    method:"GET"
+  })
+  .then(response=>response.json())
+  .then(data=>{
+    for(d of data)
+    {
+      console.log(d)
+    }
+  })
+});
+</script>
 {% endblock %}
