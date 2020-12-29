@@ -31,7 +31,7 @@ Things that contained in each file:
 
 
  Why I did it? :
-    I made this "Project Tracker" to help and track all my future web advantures as well as to eliminate the buying of software management, since I made this, plus it will be good to put on the CV.
+    I made this "Project Tracker" to help and track all my future web advantures as well as to eliminate the buying of software management tools, since I made this, plus it will be good to put on the CV.
 
 
 
