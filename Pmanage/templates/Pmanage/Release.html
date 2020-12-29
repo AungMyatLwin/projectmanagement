@@ -2,9 +2,9 @@
 {% block active3 %} active {% endblock active3 %}
 {% block body %}
 {% for project_release in proj  %}
-<ul>
-    <li>
-       {{project_release.Project_name}} and {{project_release.status}} 
+<ul class="list-group">
+    <li class="list-group-item">
+       {{project_release.Project_name}} <br> Status: {{project_release.status}} 
     </li>
 </ul>
 {% endfor %}

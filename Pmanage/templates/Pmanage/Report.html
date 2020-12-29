@@ -1,51 +1,27 @@
 {% extends 'Pmanage/layout.html' %}
+{% load static %}
 {% block title %}
 Report
 {% endblock title %}
 {% block active4 %} active {% endblock active4 %}
 {% block body %}
 {% for project_release in projs %}
-<ul>
+<ul class="list-group">
     <form action="{% url 'reported' project_release.id  %}" method="POST" >
       <li hidden="True" id="id">{{project_release.id}}</li>
         {% csrf_token %}
-    <li>
+    <li  class="list-group-item">
       {{project_release.Project_name}} and {{project_release.status}}
     </li>
-    <textarea name="Report"></textarea>
-    <button >Report</button>
+    <li class="list-group-item"><textarea   style="height: 100px; width: 300px;" name="Report"></textarea></li>
+    <button  class="btn btn-outline-primary"  class="list-group-item">Report</button>
 </form>
-<button value="{{project_release.id}}" id="shows">Show Reports</button>
+<button value="{{project_release.id}}" id="shows"  class="btn btn-dark" >Show Reports</button>
 </ul>
 
 {% endfor %}
-<div id="show"></div>
-<script>
-let funzr =document.addEventListener('click',
-  function ()
-  {
-  let id=document.querySelectorAll("#id");
-  let test=event.target
-  eve(test.value)
-  document.querySelector('#show').innerHTML=' ';
-  });
-   
-  function eve(id)
-  {
-    let div=document.querySelector('#show');
-  fetch(`/${id}/reports`,
-  {
-    method:"GET"
-  })
-  .then(response=>response.json())
-  .then(response=>{
-    response.forEach(element => {
-      let p=document.createElement('p');
-      p.append(element);
-      div.appendChild(p)
-    });
-  })
-
-  }
-</script>
+<div  class="container-fluid">
+<div id="show" class="list-group-item"></div>
+</div>
+<script src="{% static 'Pmanage/report.js' %}"></script>
 {% endblock %}
