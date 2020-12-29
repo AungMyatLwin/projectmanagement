@@ -14,6 +14,9 @@ def index(request):
     else:
         return render(request, "Pmanage/login.html")
 
+def register(request):
+    return HttpResponse("Hello")
+
 
 def login(request):
     if request.method == 'POST':
