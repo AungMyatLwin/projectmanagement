@@ -6,6 +6,7 @@ urlpatterns = [
     path('<int:id>/ProjectId',views.intproject,name="PID"),
     path('login',views.login,name="Login"),
     path('logout',views.logout,name="Logout"),
+    path('Register',views.register,name="Register"),
     path("createproject",views.createproject,name="Create"),
     path("<int:id>/createplans",views.create_plan,name="Cplan"),
     path('projects',views.projects,name='All_Project'),

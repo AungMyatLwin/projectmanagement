@@ -15,7 +15,7 @@ def index(request):
         return render(request, "Pmanage/login.html")
 
 def register(request):
-    return HttpResponse("Hello")
+     return render(request, "Pmanage/register.html")
 
 
 def login(request):
