@@ -19,4 +19,5 @@ urlpatterns = [
     path("Released",views.released,name="Released"),
     path('<int:id>/reports',views.reported,name='reported')
     ,path('report',views.report,name="Report"),
+    path('Create_User',views.reg_user,name="CreateUser")
 ]

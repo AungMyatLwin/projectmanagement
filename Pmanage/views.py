@@ -4,8 +4,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Project, User, Tasks,Report
 from django.views.decorators.csrf import csrf_exempt
+from .forms import UserForm
 from django.http import JsonResponse
+from django.contrib.auth.hashers import make_password
 import json
+import hashlib
 # Create your views here.
 
 def index(request):
@@ -15,8 +18,25 @@ def index(request):
         return render(request, "Pmanage/login.html")
 
 def register(request):
-     return render(request, "Pmanage/register.html")
-
+    f=UserForm()
+    pf=f.as_p()
+    return render(request, "Pmanage/register.html")
+    
+def reg_user(request):
+    if request.method=="POST":
+        usrn=request.POST["username"]
+        email=request.POST["email"]
+        pwd=request.POST["password"]
+        print(f'{usrn} and {email} {pwd}')
+        # django use pbdk2 algo with sha-256. 
+        # make_password import from django.contrib.auth.hashers
+        # will take care of it.
+        password=make_password(pwd)
+        print(password)
+        Usr=User.objects.create(username=usrn,email=email,password=password)
+        Usr.save()
+        return HttpResponseRedirect(reverse(index))
+    return HttpResponseRedirect(reverse(index))
 
 def login(request):
     if request.method == 'POST':
