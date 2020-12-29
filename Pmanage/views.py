@@ -117,6 +117,7 @@ def create_plan(request, id):
     tadd.save()
     return HttpResponseRedirect(reverse(intproject, args=[id]))
 
+@login_required
 # id is not id its percentage
 def task_percentage(request,id):
     taskper=request.GET.get('percentage')
@@ -133,6 +134,7 @@ def task_percentage(request,id):
 
 # get average percentage of the each given project
 
+@login_required
 def updateperpro(id):
     li=list()
     # print(id)
@@ -149,15 +151,17 @@ def updateperpro(id):
     print("updated") 
 
 
+@login_required
 def update(pid,avg):
     Project.objects.filter(id=pid).update(complete_percentage=avg)
     print("updated") 
     
-
+@login_required
 def track(request):
     proj=Project.objects.all()
     return render(request, "Pmanage/Track.html",{"proj": proj})
     
+@login_required
 @csrf_exempt
 def release(request):
     id=request.body
@@ -165,15 +169,17 @@ def release(request):
     projec=Project.objects.filter(id=project_id).update(status="release")
     return  JsonResponse({"proj":projec})
 
+@login_required
 def released(request):
     proj = Project.objects.filter(status="release")
     return render(request, "Pmanage/Release.html",{"proj": proj})
 
-
+@login_required
 def report(request):
     projec=Project.objects.filter(status="release")
     return render(request, "Pmanage/Report.html",{"projs":projec})
 
+@login_required
 @csrf_exempt
 def reported(request,id):
     if request.method == "POST":
