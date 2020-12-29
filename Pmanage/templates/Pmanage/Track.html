@@ -9,11 +9,14 @@
         <div class="progress-bar" role="progressbar" style="width:{{projects.complete_percentage}}%;" aria-valuenow="{{projects.complete_percentage}}" aria-valuemin="0" aria-valuemax="100">{{projects.complete_percentage}}%</div>
       </div>
     <li class="list-group-item">Progress Percentage {{projects.complete_percentage}}</li>
-     {% if  projects.complete_percentage == 100 and projects.status == "release" %}
+
+     {% if  projects.complete_percentage == 100  %}
+        {% if projects.status == "release" %}
      <button onclick="send('{{projects.id}}')" name="release" disabled  class="btn btn-dark">Released</button>
-      {% elif projects.complete_percentage == 100 and projects.status == "unreleased" %}
+      {% elif projects.status == "unrelease" %}
      <button onclick="send('{{projects.id}}')" name="release"  class="btn btn-outline-primary">Release</button>
      <p>{{projects.status}}</p>
+        {% endif %}
     {% endif %}
 </ul>
 {% endfor %}
