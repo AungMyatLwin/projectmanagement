@@ -117,24 +117,15 @@ def create_plan(request, id):
     tadd.save()
     return HttpResponseRedirect(reverse(intproject, args=[id]))
 
-@login_required
 # id is not id its percentage
 def task_percentage(request,id):
     taskper=request.GET.get('percentage')
-    # print("percentage ",taskper)
-    taskid=id
-    print('int: ',taskid)
+    print(type(id))
     taskperupdate=Tasks.objects.filter(id=id).update(taskpercentage=taskper)
-    # get the project
-    # test=sum(lst) / len(lst)
-    # Average percentage update.
-    updateperpro(taskid)
-  
+    updateperpro(id)
     return HttpResponseRedirect(reverse(task,args=[id]))
 
 # get average percentage of the each given project
-
-@login_required
 def updateperpro(id):
     li=list()
     # print(id)
@@ -151,7 +142,7 @@ def updateperpro(id):
     print("updated") 
 
 
-@login_required
+
 def update(pid,avg):
     Project.objects.filter(id=pid).update(complete_percentage=avg)
     print("updated") 
