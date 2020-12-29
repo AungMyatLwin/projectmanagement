@@ -57,7 +57,7 @@ def login(request):
 @login_required()
 def logout(request):
     Lout(request)
-    return render(request, "Pmanage/logout.html")
+    return HttpResponseRedirect(reverse(index))
 
 
 @login_required
