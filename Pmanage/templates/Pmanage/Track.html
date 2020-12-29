@@ -1,13 +1,19 @@
 {% extends 'Pmanage/layout.html' %}
+{% block active2 %} active {% endblock active2 %}
 {% block body %}
 {% for projects in proj %}
-<ul>
-    <li hidden="true" id="project_id">{{projects.id}}</li>
-    <li>{{projects.Project_name}}</li>
-    <li>{{projects.complete_percentage}}</li>
-    {% if projects.complete_percentage == 100 %}
-
-     <button onclick="send('{{projects.id}}')" name="release">Release</button>
+<ul class="list-group">
+    <li hidden="true" id="project_id" class="list-group-item" >{{projects.id}}</li>
+    <li class="list-group-item">Project Name: {{projects.Project_name}}</li>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width:{{projects.complete_percentage}}%;" aria-valuenow="{{projects.complete_percentage}}" aria-valuemin="0" aria-valuemax="100">{{projects.complete_percentage}}%</div>
+      </div>
+    <li class="list-group-item">Progress Percentage {{projects.complete_percentage}}</li>
+     {% if  projects.complete_percentage == 100 and projects.status == "release" %}
+     <button onclick="send('{{projects.id}}')" name="release" disabled  class="btn btn-dark">Released</button>
+      {% elif projects.complete_percentage == 100 and projects.status == "unreleased" %}
+     <button onclick="send('{{projects.id}}')" name="release"  class="btn btn-outline-primary">Release</button>
+     <p>{{projects.status}}</p>
     {% endif %}
 </ul>
 {% endfor %}

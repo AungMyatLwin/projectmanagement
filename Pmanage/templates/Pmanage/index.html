@@ -1,10 +1,11 @@
 {% extends 'Pmanage/layout.html' %}
+{% block active1 %} active {% endblock active1 %}
 {% block body %}
 {% for p in projects %}
-<ul>
-    <li><a href="{% url 'PID' p.id %}">{{p.Project_name}}</a></li>
-    <li>{{p.team}}</li>
-    <li>{{p.max_day}}</li>
+<ul class="list-group">
+    <li class="list-group-item"><a href="{% url 'PID' p.id %}">{{p.Project_name}}</a></li>
+    <li class="list-group-item">{{p.team}}</li>
+    <li class="list-group-item">{{p.max_day}}</li>
 </ul>
 {% endfor %}
 {% endblock %}
