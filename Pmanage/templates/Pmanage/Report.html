@@ -5,6 +5,7 @@ Report
 {% endblock title %}
 {% block active4 %} active {% endblock active4 %}
 {% block body %}
+<div class="container-fluid">
 {% for project_release in projs %}
 <ul class="list-group">
     <form action="{% url 'reported' project_release.id  %}" method="POST" >
@@ -13,11 +14,14 @@ Report
     <li  class="list-group-item">
       {{project_release.Project_name}} and {{project_release.status}}
     </li>
-    <li class="list-group-item"><textarea   style="height: 200px; width: 1275px;" name="Report"></textarea></li>
+        <div class="container-fluid">
+    <li class="list-group-item"><textarea  class="form-control" id="exampleFormControlTextarea1" rows="3" name="Report"></textarea></li>
+        </div>
     <button  class="btn btn-outline-primary"  class="list-group-item">Report</button>
 </form>
 <button value="{{project_release.id}}" id="shows"  class="btn btn-dark" >Show Reports</button>
 </ul>
+    </div>
 
 {% endfor %}
 <div  class="container-fluid">
